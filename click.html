@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make a Test</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 16px;
+            background-color: #FFA500;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0 2mm #FFA500;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form action="{{ url_for('upload_page') }}" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <button type="submit">Click here to make a test</button>
+    </form>
+</body>
+</html>

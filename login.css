@@ -1,0 +1,95 @@
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url("Limg3.jpg");
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: gradient 10s infinite linear;
+}
+
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.login-page {
+  width: 500px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 50px #ddd;
+  animation: slide-in 2s ease;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.login-form img {
+  height: 160px;
+  width: 160px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background-color: #707B7C;
+  padding: 10px;
+}
+
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 2px solid #ddd;
+  box-sizing: border-box;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px #007bff;
+}
+
+.login-form #login[type="submit"] {
+  width: 100%;
+  padding: 15px;
+  background: #FFA500;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-form #login[type="submit"]:hover {
+  background: #e67e22;
+}

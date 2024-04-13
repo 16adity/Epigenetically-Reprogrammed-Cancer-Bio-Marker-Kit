@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #cdcaca;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            position: relative;
+            width: 600px;
+            background-color: #c3cdcf;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin: 50px auto;
+        }
+
+        h1 {
+            color: #663399;
+            margin-bottom: 30px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #663399;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #4B0082;
+        }
+
+        fieldset {
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        legend {
+            font-weight: bold;
+            color: #663399;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #9a9494;
+        }
+
+        th {
+            background-color: #663399;
+            color: #fff;
+        }
+
+        .medical input[type="checkbox"] {
+            display: none;
+        }
+
+        .medical label {
+            display: inline-block;
+            background-color: #663399;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .medical label:hover {
+            background-color: #4B0082;
+        }
+
+        .medical input[type="checkbox"]:checked+label {
+            background-color: #f14815;
+        }
+
+        /* Image styling */
+        .form-image {
+            position: absolute;
+            top: 70%;
+            right: -01px; /* Adjust the right offset */
+            transform: translateY(-50%);
+            width: 400px;
+            height: auto;
+        }
+
+        .form-image-bottom {
+            position: absolute;
+            bottom: -1100px;
+            left: -00px; /* Adjust the left offset */
+            width: 400px;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <form action="/submit" method="POST">
+
+        <h1>Patient Registration Form</h1>
+
+        <h2>--Patient details--</h2>
+        <h3>* Indicates required details</h3>
+
+        <p>Name* : <input type="text" name="name" id="name" placeholder="Enter your name" required></p>
+
+        <p>Date of Birth* : <input type="date" name="DOB" id="DOB" required></p>
+
+        <fieldset>
+            <legend>Gender*</legend>
+            <p><input type="radio" name="Gender" id="male" value="Male" required> <label for="male">Male</label><br>
+                <input type="radio" name="Gender" id="female" value="Female" required> <label for="female">Female</label><br>
+                <input type="radio" name="Gender" id="other" value="Other" required> <label for="other">Other</label>
+            </p>
+        </fieldset>
+
+        <p>Age* : <input type="number" name="Age" id="Age" maxlength="2" required></p>
+
+        <p>Address* : <br> <textarea name="address" id="address" cols="20" rows="5" placeholder="Enter your address"
+                                     required></textarea></p>
+
+        <p>Pincode*: <input type="number" name="pincode" id="pincode" required></p>
+
+        <p>Mobile No.* : <input type="number" name="Mobile" id="Mobile"></p>
+
+        <p>Email: <input type="text" name="email" id="email"></p>
+
+        <hr>
+        <hr>
+
+        <h2>--Emergency contact details--</h2>
+
+        <p>Name* : <input type="text" name="emergency_name" placeholder="Enter name" required></p>
+
+        <p>Relation* : <input type="text" name="relation" required></p>
+
+        <p>Mobile No.* : <input type="number" name="emergency_mobile" id="emergency_mobile"></p>
+
+        <hr>
+        <hr>
+
+        <h2>--Medical history--</h2>
+
+        <div class="medical">
+            <p>
+                <input type="checkbox" id="diabetes1" name="medical_condition" value="Diabetes Type 1">
+                <label for="diabetes1">Diabetes Type 1</label>
+
+                <input type="checkbox" id="diabetes2" name="medical_condition" value="Diabetes Type 2">
+                <label for="diabetes2">Diabetes Type 2</label>
+
+                <input type="checkbox" id="blood_pressure" name="medical_condition" value="Blood Pressure">
+                <label for="blood_pressure">Blood Pressure</label>
+
+                <input type="checkbox" id="heart_attack" name="medical_condition" value="Heart Attack">
+                <label for="heart_attack">Heart Attack</label>
+
+                <input type="checkbox" id="cholesterol" name="medical_condition" value="High Cholesterol">
+                <label for="cholesterol">High Cholesterol</label>
+
+                <input type="checkbox" id="anxiety_depression" name="medical_condition" value="Anxiety / Depression">
+                <label for="anxiety_depression">Anxiety / Depression</label>
+
+                <input type="checkbox" id="liver_disease" name="medical_condition" value="Liver Disease">
+                <label for="liver_disease">Liver Disease</label>
+
+                <input type="checkbox" id="kidney_disease" name="medical_condition" value="Kidney Disease">
+                <label for="kidney_disease">Kidney Disease</label>
+
+                <input type="checkbox" id="asthma" name="medical_condition" value="Asthma">
+                <label for="asthma">Asthma</label>
+
+                <input type="checkbox" id="other_medical" name="medical_condition" value="Other">
+                <label for="other_medical">Other</label>
+                <input type="text" id="other_medical_text" name="other_medical_text" placeholder="Specify">
+            </p>
+        </div>
+
+        <hr>
+        <hr>
+
+        <h2>--Surgical history--</h2>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Type</th>
+                <th>Year</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input type="text" name="type"></td>
+                <td><input type="number" name="year"></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="type"></td>
+                <td><input type="number" name="year"></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="type"></td>
+                <td><input type="number" name="year"></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="type"></td>
+                <td><input type="number" name="year"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <input type="submit" value="Submit">
+
+    </form>
+</div>
+
+<!-- Image outside of the form -->
+<img src="{{ url_for('static', filename='regform.png') }}" alt="Registration Form Image" class="form-image">
+<img src="{{ url_for('static', filename='nurse1.png') }}" alt="Nurse Image" class="form-image-bottom">
+
+</body>
+
+</html>

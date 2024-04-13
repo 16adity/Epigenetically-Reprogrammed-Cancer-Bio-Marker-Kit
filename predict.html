@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .header {
+            text-align: center;
+            background-color: #4B0082;
+            color: #fff;
+            padding: 10px 20px;
+        }
+
+        .header img {
+            height: 80px;
+            /* Adjust height according to your logo size */
+        }
+
+        .header-text {
+            font-weight: bold;
+            font-size: 20px;
+            /*font-style: italic;*/
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 2px solid #000;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4B0082;
+            width: 100%;
+        }
+
+        h2,
+        h3 {
+            color: #4B0082;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            padding: 8px 0;
+        }
+
+        .bold-key {
+            font-weight: bold;
+        }
+
+        .patient-data {
+            width: 100%;
+            margin-bottom: 0px;
+        }
+
+        .prediction-section {
+            border-top: 2px solid #000;
+            padding-top: 0px;
+            width: 50%;
+        }
+
+        .prediction-section h2 {
+            margin-top: 20px;
+        }
+
+        .image-section {
+            text-align: center;
+            margin-top: 0px;
+            width: 50%;
+        }
+
+        .image-section img {
+            max-width: 80%;
+            /* Adjust the maximum width as needed */
+            height: 3.5cm;
+            /* Maintain aspect ratio */
+        }
+
+
+        img {
+            max-width: 100%;
+            border: 5px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-height: 400px;
+            /* Adjust the max-height as needed */
+        }
+
+        .print-button {
+            display: block;
+            margin: 20px auto;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .print-button:hover {
+            background-color: #45a049;
+        }
+
+        .make-test-button {
+            display: block;
+            margin: 20px auto;
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .make-test-button:hover {
+            background-color: #0056b3;
+        }
+        .Log-out-button{
+            display: block;
+            margin: 20px auto;
+            background-color: #fd5a28;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .Log-out-button:hover {
+            background-color: #0056b3;
+        }
+
+        
+
+        @media print {
+            .footer {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                text-align: center;
+                background-color: #f8f9fa;
+                padding: 10px;
+                border-top: 2px solid #000;
+            }
+        }
+
+        @media print {
+            .print-button {
+                display: none;
+            }
+        }
+        @media print {
+            .make-test-button {
+                display: none;
+            }
+        }
+        @media print {
+            .Log-out-button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <!-- Logo in the right corner -->
+        <img src="{{ url_for('static', filename='CANCER LOGO 1.png') }}" alt="Cancer logo" class="start image">
+        <!-- Line of text -->
+        <div class="header-text">Epigenetically Reprogrammed Intelligent Cancer Biomarker Kit</div>
+    </div>
+
+    <div class="container">
+        <h1>Patient Report</h1>
+
+        <div class="patient-data">
+            <ul>
+                {% for key, value in recent_patient_data.items() %}
+                <li><span class="bold-key">{{ key }}</span>: {{ value }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="prediction-section">
+            <h2>Prediction Results</h2>
+            {% if prediction == 'Cancer Cells Detected' %}
+                <h3>{{ prediction }}</h3>
+                <p><b>Percentage of Cancer Cells Detected:</b> {{ percentage_affected }}%</p>
+                <p><b>Current Stage of Cancer:</b> {{ cancer_stage }}</p>
+            {% else %}
+                <h4>{{ prediction }}</h4>
+            {% endif %}
+        </div>
+
+        <div class="image-section">
+            <h2>Original Image</h2>
+            <!-- Display the image using base64 encoding -->
+            <img src="data:image/jpeg;base64,{{ original_image }}" alt="Original Image">
+        </div>
+    </div>
+
+    <!-- Print button -->
+    <button class="print-button" onclick="window.print()">Print Report</button>
+
+    <!-- Make a Test button -->
+    <button class="make-test-button" onclick="makeTest()">Make a Test</button>
+
+    <button class="Log-out-button" onclick="Logout()">Log out</button>
+
+    <!-- Footer -->
+    <div class="footer">
+        Thank you for visiting
+    </div>
+
+    <script>
+        function makeTest() {
+            // Redirect to the registration form
+            window.location.href = "/form";
+        }
+        function Logout() {
+            // Redirect to the login page
+            window.location.href = "/login";
+        }
+
+    </script>
+</body>
+
+</html>

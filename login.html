@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+
+<body>
+    <div class="login-page">
+        <form class="login-form" id="loginForm" action="/Login" method="POST">
+            <img src="{{ url_for('static', filename='doctor img.png') }}" alt="Login logo" class="Login1">
+            <input id="user_id" type="text" name="user_id" placeholder="User ID"> <br>
+            <input id="password" type="password" name="password" maxlength="5" placeholder="Password"> <br>
+            <input id="login" type="submit" value="Login">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', validateLogin);
+
+        function validateLogin(event) {
+            event.preventDefault();
+            var userId = document.getElementById('user_id').value;
+            var password = document.getElementById('password').value;
+
+            if (userId === "mt" || userId === "MT" && password === "12345") {
+                // Redirect to the form page if login is successful
+                window.location.href = "/form";
+            } else {
+                // Display an alert for invalid credentials
+                alert("Invalid User ID or Password. Please try again.");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
